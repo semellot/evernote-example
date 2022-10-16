@@ -1,14 +1,14 @@
 #!/usr/bin/env python 
+import os
+from dotenv import load_dotenv
 from evernote.api.client import EvernoteClient
-
-from config import Settings
 
     
 if __name__ == '__main__':
-    config = Settings()
+    load_dotenv()
     client = EvernoteClient(
-        token=config.EVERNOTE_PERSONAL_TOKEN,
-        sandbox=False
+        token=os.environ['EVERNOTE_PERSONAL_TOKEN'],
+        sandbox=True
     )
     note_store = client.get_note_store()
 
